@@ -1,0 +1,314 @@
+{
+  "_comment": "PERFUMARIA GOLDEN - CATÁLOGO DE PRODUTOS",
+  "_instructions": {
+    "como_adicionar_produto": "Copie um produto existente e modifique os campos",
+    "campos_obrigatorios": ["id", "name", "description", "price", "image", "available", "category"],
+    "categorias_disponiveis": ["Perfumes", "Cabelos", "Unhas", "Pele", "Maquiagem"],
+    "formato_preco": "Use ponto para decimais (ex: 199.90)",
+    "formato_imagem": "URL completa da imagem (ex: https://...)",
+    "disponibilidade": "true = disponível, false = indisponível",
+    "bestseller": "true = produto mais vendido (aparece no carousel especial)"
+  },
+  "products": [
+    {
+      "id": "1",
+      "name": "Golden Rose",
+      "description": "Perfume floral sofisticado com notas de rosa búlgara e âmbar",
+      "price": 189.90,
+      "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=80",
+      "available": true,
+      "category": "Perfumes",
+      "bestseller": true
+    },
+    {
+      "id": "2",
+      "name": "Shampoo Hidratação Profunda",
+      "description": "Shampoo nutritivo com óleo de argan e queratina para cabelos sedosos",
+      "price": 45.90,
+      "image": "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": true
+    },
+    {
+      "id": "3",
+      "name": "Condicionador Reparador",
+      "description": "Condicionador intensivo que restaura e fortalece os fios danificados",
+      "price": 49.90,
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": false
+    },
+    {
+      "id": "4",
+      "name": "Kit Esmaltes Premium",
+      "description": "Coleção com 6 esmaltes de longa duração em cores vibrantes",
+      "price": 79.90,
+      "image": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&q=80",
+      "available": true,
+      "category": "Unhas",
+      "bestseller": true
+    },
+    {
+      "id": "5",
+      "name": "Creme Facial Anti-Idade",
+      "description": "Creme rejuvenescedor com ácido hialurônico e vitamina C",
+      "price": 129.90,
+      "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": true
+    },
+    {
+      "id": "6",
+      "name": "Oud Imperial",
+      "description": "Fragrância amadeirada intensa com oud e especiarias orientais",
+      "price": 249.90,
+      "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&q=80",
+      "available": true,
+      "category": "Perfumes",
+      "bestseller": false
+    },
+    {
+      "id": "7",
+      "name": "Sérum Capilar Reparador",
+      "description": "Tratamento intensivo para pontas duplas e cabelos ressecados",
+      "price": 69.90,
+      "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": false
+    },
+    {
+      "id": "8",
+      "name": "Lixa de Unha Profissional",
+      "description": "Kit com 10 lixas de unha de diferentes granulações",
+      "price": 24.90,
+      "image": "https://images.unsplash.com/photo-1599948128020-9a44d19e2c4f?w=400&q=80",
+      "available": true,
+      "category": "Unhas",
+      "bestseller": false
+    },
+    {
+      "id": "9",
+      "name": "Hidratante Corporal Luxo",
+      "description": "Loção corporal com manteiga de karité e óleo de coco",
+      "price": 89.90,
+      "image": "https://images.unsplash.com/photo-1556228852-80a5f1b9c37d?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": false
+    },
+    {
+      "id": "10",
+      "name": "Paleta de Sombras Nude",
+      "description": "12 cores neutras e versáteis para looks do dia a dia",
+      "price": 119.90,
+      "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": true
+    },
+    {
+      "id": "11",
+      "name": "Base Líquida HD",
+      "description": "Cobertura natural com acabamento matte de longa duração",
+      "price": 99.90,
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": true
+    },
+    {
+      "id": "12",
+      "name": "Máscara Facial Detox",
+      "description": "Máscara de argila verde para limpeza profunda dos poros",
+      "price": 54.90,
+      "image": "https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": false
+    },
+    {
+      "id": "13",
+      "name": "Vanilla Dreams",
+      "description": "Perfume doce e envolvente com baunilha de Madagascar e caramelo",
+      "price": 169.90,
+      "image": "https://images.unsplash.com/photo-1588405748880-12d1d2a59bd9?w=400&q=80",
+      "available": true,
+      "category": "Perfumes",
+      "bestseller": false
+    },
+    {
+      "id": "14",
+      "name": "Citrus Noir",
+      "description": "Perfume cítrico moderno com bergamota, vetiver e almíscar",
+      "price": 199.90,
+      "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&q=80",
+      "available": true,
+      "category": "Perfumes",
+      "bestseller": false
+    },
+    {
+      "id": "15",
+      "name": "Jasmine Royale",
+      "description": "Elegante bouquet de jasmim com toques de sândalo",
+      "price": 219.90,
+      "image": "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=80",
+      "available": true,
+      "category": "Perfumes",
+      "bestseller": true
+    },
+    {
+      "id": "16",
+      "name": "Máscara de Hidratação Intensiva",
+      "description": "Tratamento profundo para cabelos secos e danificados",
+      "price": 59.90,
+      "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": false
+    },
+    {
+      "id": "17",
+      "name": "Óleo Capilar Nutritivo",
+      "description": "Blend de óleos naturais para brilho e maciez extrema",
+      "price": 79.90,
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": false
+    },
+    {
+      "id": "18",
+      "name": "Leave-in Protetor Térmico",
+      "description": "Proteção contra calor e frizz com efeito anti-umidade",
+      "price": 54.90,
+      "image": "https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&q=80",
+      "available": true,
+      "category": "Cabelos",
+      "bestseller": false
+    },
+    {
+      "id": "19",
+      "name": "Base Fortalecedora para Unhas",
+      "description": "Base com cálcio e vitaminas para unhas mais fortes",
+      "price": 34.90,
+      "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80",
+      "available": true,
+      "category": "Unhas",
+      "bestseller": false
+    },
+    {
+      "id": "20",
+      "name": "Removedor de Cutículas",
+      "description": "Gel removedor suave que amacia e remove cutículas",
+      "price": 28.90,
+      "image": "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=400&q=80",
+      "available": true,
+      "category": "Unhas",
+      "bestseller": false
+    },
+    {
+      "id": "21",
+      "name": "Kit Manicure Profissional",
+      "description": "Conjunto completo com alicate, lixa e palito de unha",
+      "price": 89.90,
+      "image": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&q=80",
+      "available": true,
+      "category": "Unhas",
+      "bestseller": false
+    },
+    {
+      "id": "22",
+      "name": "Sérum Vitamina C",
+      "description": "Sérum iluminador com vitamina C pura para pele radiante",
+      "price": 149.90,
+      "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": true
+    },
+    {
+      "id": "23",
+      "name": "Protetor Solar FPS 50",
+      "description": "Proteção solar de amplo espectro com toque seco",
+      "price": 79.90,
+      "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": false
+    },
+    {
+      "id": "24",
+      "name": "Água Micelar",
+      "description": "Limpeza facial suave que remove maquiagem e impurezas",
+      "price": 49.90,
+      "image": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": false
+    },
+    {
+      "id": "25",
+      "name": "Esfoliante Facial",
+      "description": "Esfoliação suave com microesferas para pele renovada",
+      "price": 59.90,
+      "image": "https://images.unsplash.com/photo-1556228852-80a5f1b9c37d?w=400&q=80",
+      "available": true,
+      "category": "Pele",
+      "bestseller": false
+    },
+    {
+      "id": "26",
+      "name": "Batom Líquido Matte",
+      "description": "Batom de longa duração com acabamento aveludado",
+      "price": 44.90,
+      "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": false
+    },
+    {
+      "id": "27",
+      "name": "Máscara de Cílios Volume",
+      "description": "Máscara que alonga e volumiza os cílios sem borrar",
+      "price": 69.90,
+      "image": "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": false
+    },
+    {
+      "id": "28",
+      "name": "Primer Facial",
+      "description": "Primer que prepara a pele e prolonga a duração da maquiagem",
+      "price": 84.90,
+      "image": "https://images.unsplash.com/photo-1596704017254-9b121068ec31?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": false
+    },
+    {
+      "id": "29",
+      "name": "Blush em Pó",
+      "description": "Blush com pigmentação intensa e acabamento natural",
+      "price": 54.90,
+      "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": false
+    },
+    {
+      "id": "30",
+      "name": "Iluminador Líquido",
+      "description": "Iluminador que dá brilho natural e efeito glow à pele",
+      "price": 64.90,
+      "image": "https://images.unsplash.com/photo-1583241800698-c5e4d9c9e8d7?w=400&q=80",
+      "available": true,
+      "category": "Maquiagem",
+      "bestseller": false
+    }
+  ]
+}
