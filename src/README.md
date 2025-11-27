@@ -1,195 +1,235 @@
+# 🌟 Perfumaria Golden - E-commerce
 
-# 🌟 Perfumaria Golden
+Site completo de e-commerce para a Perfumaria Golden, especializada em produtos de beleza premium.
 
-E-commerce completo de produtos de beleza com integração WhatsApp, desenvolvido em React + TypeScript + Tailwind CSS.
+## 🎨 Características
 
-## 📋 Sobre o Projeto
+- ✅ Catálogo completo de produtos
+- ✅ Carrinho de compras funcional
+- ✅ Checkout em múltiplas etapas
+- ✅ Integração com WhatsApp
+- ✅ Sistema administrativo protegido
+- ✅ Design responsivo (mobile/desktop)
+- ✅ Acessibilidade (VLibras)
+- ✅ Busca e filtros de produtos
 
-Site de e-commerce frontend-only para venda de produtos de beleza (perfumes, cosméticos, cuidados para cabelo, unhas, pele e maquiagem) com checkout via WhatsApp.
+## 🚀 Tecnologias
 
-### ✨ Funcionalidades
+- **React** + TypeScript
+- **React Router** (navegação)
+- **Tailwind CSS** (estilização)
+- **Lucide React** (ícones)
+- **Context API** (gerenciamento de estado)
+- **LocalStorage** (persistência)
 
-- 🛍️ Catálogo completo de produtos com busca e filtros
-- 🛒 Carrinho de compras com persistência (localStorage)
-- 📱 Checkout via WhatsApp com mensagem formatada
-- 🎠 Carousel de produtos em destaque
-- ♿ Acessibilidade completa (VLibras, alto contraste, navegação por teclado)
-- 📱 Design responsivo (mobile e desktop)
-- 🎨 Tema elegante marrom e dourado
+## 📦 Instalação
 
-## 🚀 Como Rodar o Projeto
-
-### Pré-requisitos
-
-- Node.js 16+ instalado
-- npm ou yarn
-
-### Instalação
-
-1. **Clone o repositório** (ou baixe os arquivos)
 ```bash
-git clone [url-do-repositorio]
+# Clone o repositório
+git clone https://github.com/seu-usuario/perfumaria-golden.git
+
+# Entre na pasta
 cd perfumaria-golden
-```
 
-2. **Instale as dependências**
-```bash
+# Instale dependências
 npm install
-# ou
-yarn install
-```
 
-3. **Configure o número do WhatsApp**
-
-Edite o arquivo `utils/whatsapp.ts` e altere o número na linha 6:
-```typescript
-const phoneNumber = '5516997320195'; // Seu número com DDI + DDD
-```
-
-4. **Inicie o servidor de desenvolvimento**
-```bash
+# Inicie o servidor de desenvolvimento
 npm start
-# ou
-yarn start
 ```
 
-5. **Acesse no navegador**
-```
-http://localhost:3000
-```
+## 🔐 Sistema Administrativo
 
-## 📦 Build para Produção
-
-```bash
-npm run build
-# ou
-yarn build
+### **Acesso:**
+```
+URL: /admin
+Usuário: admin
+Senha: golden2024
 ```
 
-Os arquivos otimizados estarão na pasta `build/`.
+⚠️ **IMPORTANTE:** Mude a senha antes de usar em produção!
 
-## 🛠️ Gerenciamento de Produtos
+### **Funcionalidades:**
+- CRUD completo de produtos
+- Exportar/Importar JSON
+- Busca e filtros
+- Proteção por autenticação
 
-Consulte o arquivo **[PRODUTOS.md](./PRODUTOS.md)** para instruções detalhadas sobre:
-- Como adicionar novos produtos
-- Como editar produtos existentes
-- Como remover produtos
-- Como importar produtos via CSV/XML
-- Estrutura do arquivo products.json
+### **Segurança:**
+- Login obrigatório
+- Proteção contra força bruta (5 tentativas)
+- Bloqueio temporário (15 minutos)
+- Sessão com expiração (2 horas)
 
-## ♿ Recursos de Acessibilidade
+📚 **Documentação completa:** [ADMIN.md](ADMIN.md)
 
-Este site possui recursos completos de acessibilidade:
-
-### 🗣️ VLibras (Libras)
-- Widget no canto inferior direito (botão marrom)
-- Tradução automática para Língua Brasileira de Sinais
-- Clique no botão para ativar
-
-### 🎨 Alto Contraste
-- Suporte automático para modo de alto contraste do sistema
-- Cores otimizadas para daltonismo
-- Paleta marrom/dourado com boa legibilidade
-
-### ⌨️ Navegação por Teclado
-- Todos os elementos interativos acessíveis via Tab
-- Indicadores de foco visíveis
-- ARIA labels em todos os componentes
-
-### 🔍 Leitores de Tela
-- Estrutura semântica HTML5
-- Alt text em todas as imagens
-- Descrições ARIA completas
-
-## 📱 Configuração do WhatsApp
-
-### Formato do Número
-O número deve estar no formato internacional sem espaços ou caracteres especiais:
-```
-5516997320195
-```
-Onde:
-- `55` = Código do Brasil
-- `16` = DDD
-- `997320195` = Número do celular
-
-### Mensagem Enviada
-A mensagem inclui automaticamente:
-- Dados do cliente (nome, celular, email, endereço)
-- Lista de produtos com quantidades
-- Subtotais e total do pedido
-- Formatação UTF-8 com emojis
-
-## 🎨 Personalização
-
-### Cores
-As cores principais estão definidas em `tailwind.config.js`:
-```javascript
-colors: {
-  amber: { /* tons de marrom */ },
-}
-```
-
-### Fontes
-Fontes configuradas em `index.css`:
-- **Títulos**: Playfair Display (serif elegante)
-- **Corpo**: Inter (sans-serif moderna)
-
-## 📂 Estrutura do Projeto
+## 🛠️ Estrutura do Projeto
 
 ```
 perfumaria-golden/
-├── components/          # Componentes React reutilizáveis
+├── components/          # Componentes reutilizáveis
 │   ├── Badge.tsx
 │   ├── Button.tsx
-│   ├── CartItem.tsx
 │   ├── CartSidebar.tsx
-│   ├── CheckoutForm.tsx
-│   ├── Footer.tsx
-│   ├── Header.tsx
 │   ├── ProductCard.tsx
-│   └── ProductCarousel.tsx
-├── data/
-│   └── products.json    # Catálogo de produtos (EDITE AQUI!)
-├── hooks/
-│   └── useCart.ts       # Lógica do carrinho
-├── pages/               # Páginas da aplicação
-│   ├── Cart.tsx
+│   ├── ProtectedRoute.tsx  # 🔒 Proteção de rotas
+│   └── ...
+├── contexts/           # Context API
+│   └── CartContext.tsx
+├── data/              # Dados
+│   └── products.json  # Catálogo de produtos
+├── hooks/             # Custom hooks
+│   └── useCart.ts
+├── pages/             # Páginas
 │   ├── Home.tsx
-│   └── Products.tsx
-├── utils/
-│   ├── whatsapp.ts      # Geração de mensagem WhatsApp
-│   └── importProducts.ts # Importação CSV/XML
-├── App.tsx              # Componente principal
-├── index.css            # Estilos globais
-└── index.tsx            # Ponto de entrada
+│   ├── Products.tsx
+│   ├── Cart.tsx
+│   ├── Admin.tsx      # 🔒 Área administrativa
+│   └── ...
+├── utils/             # Utilitários
+│   └── whatsapp.ts
+└── ...
 ```
 
-## 🐛 Solução de Problemas
+## 🎯 Páginas
 
-### O carrinho não abre ao adicionar produto
-- Verifique se o componente `CartSidebar` está renderizado no `App.tsx`
-- Verifique o console do navegador por erros
+- `/` - Home (carousels, hero, features)
+- `/products` - Catálogo completo
+- `/cart` - Carrinho de compras
+- `/delivery` - Dados de entrega
+- `/payment` - Dados de pagamento
+- `/admin` - 🔒 Sistema administrativo (protegido)
 
-### Produtos não aparecem
-- Verifique se o arquivo `data/products.json` está correto
-- Valide o JSON em um validador online
+## 🔒 Configurar Senha do Admin
 
-### WhatsApp não abre
-- Verifique se o número está no formato correto (sem espaços ou caracteres)
-- Teste em um dispositivo com WhatsApp instalado
+### **Opção 1: Código (Rápido)**
+Edite `components/ProtectedRoute.tsx`:
+```typescript
+const ADMIN_USERNAME = 'seu_usuario';
+const ADMIN_PASSWORD = 'sua_senha_forte';
+```
 
-### VLibras não aparece
-- Aguarde alguns segundos após o carregamento da página
-- Verifique sua conexão com a internet (widget carrega de servidor externo)
+### **Opção 2: Variáveis de Ambiente (Recomendado)**
+1. Crie `.env`:
+   ```env
+   REACT_APP_ADMIN_USERNAME=seu_usuario
+   REACT_APP_ADMIN_PASSWORD=sua_senha_forte
+   ```
+
+2. Configure na Vercel (Settings → Environment Variables)
+
+## 📱 WhatsApp
+
+Configure o número em:
+- `utils/whatsapp.ts` (linha 7)
+- `components/Footer.tsx` (linha 32)
+
+Número atual: `(16) 99732-0195`
+
+## 🎨 Personalização
+
+### **Cores (Paleta Golden):**
+```css
+--color-golden-dark: #1a1410;
+--color-golden-brown: #3d2817;
+--color-golden-primary: #c9a961;
+--color-golden-light: #e8d5b7;
+--color-golden-cream: #f5efe6;
+```
+
+### **Fontes:**
+- **Títulos:** Playfair Display (serif)
+- **Corpo:** Inter (sans-serif)
+
+## 🚀 Deploy
+
+### **Vercel (Recomendado):**
+```bash
+# Instale Vercel CLI
+npm install -g vercel
+
+# Deploy
+vercel --prod
+```
+
+Ou conecte com GitHub para deploy automático.
+
+📚 **Guia completo:** [DEPLOY.md](DEPLOY.md)
+
+## 📊 Gerenciar Produtos
+
+1. Acesse `/admin`
+2. Faça login
+3. Crie/edite/exclua produtos
+4. Exporte JSON
+5. Substitua `data/products.json`
+6. Commit e push
+
+## 🔐 Segurança
+
+### **Implementado:**
+- ✅ Autenticação no admin
+- ✅ Proteção contra força bruta
+- ✅ Sessão com expiração
+- ✅ Bloqueio temporário
+
+### **Limitações (Frontend Only):**
+- ⚠️ Credenciais no código
+- ⚠️ Sem backend real
+- ⚠️ Usuários técnicos podem contornar
+
+### **Para Produção Real:**
+Considere:
+- Backend com API
+- Banco de dados
+- JWT tokens
+- Hash de senhas (bcrypt)
+- 2FA
+
+## 📝 Scripts
+
+```bash
+npm start          # Desenvolvimento
+npm run build      # Build para produção
+npm test           # Testes
+npm run deploy     # Deploy (se configurado)
+```
+
+## 🐛 Problemas Comuns
+
+### **Admin bloqueado:**
+```javascript
+localStorage.removeItem('admin_lockout');
+```
+
+### **Sessão expirada:**
+Faça login novamente (sessão dura 2 horas)
+
+### **Produtos não aparecem:**
+Verifique `data/products.json`
+
+## 📚 Documentação
+
+- [ADMIN.md](ADMIN.md) - Sistema administrativo
+- [DEPLOY.md](DEPLOY.md) - Guia de deploy
+- [PRODUTOS.md](PRODUTOS.md) - Gerenciar produtos
+
+## 🤝 Contribuindo
+
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
 
 ## 📄 Licença
 
-Este projeto é de código aberto e pode ser usado livremente.
+Este projeto é privado e pertence à Perfumaria Golden.
 
-## 🤝 Suporte
+## 📞 Contato
 
-Para dúvidas sobre gerenciamento de produtos, consulte [PRODUTOS.md](./PRODUTOS.md).
+- **WhatsApp:** (16) 99732-0195
+- **Site:** [perfumariagolden.com.br](#)
 
 ---
 
