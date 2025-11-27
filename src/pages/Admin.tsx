@@ -1,5 +1,5 @@
-import React, { useEffect, useState, createElement } from 'react';
-import { Plus, Edit2, Trash2, Save, X, Download, Upload, Search } from 'lucide-react';
+import React, { useState, createElement } from 'react';
+import { Plus, Edit2, Trash2, Save, X, Download, Upload, Search, Eye, EyeOff } from 'lucide-react';
 import { Button } from '../components/Button';
 import productsData from '../data/products.json';
 interface Product {
@@ -11,6 +11,8 @@ interface Product {
   available: boolean;
   category: string;
   bestseller?: boolean;
+  outOfStock?: boolean;
+  showWhenOutOfStock?: boolean;
 }
 export function Admin() {
   const [products, setProducts] = useState<Product[]>(productsData.products);
@@ -18,7 +20,9 @@ export function Admin() {
   const [isCreating, setIsCreating] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('Todos');
+  const [filterStock, setFilterStock] = useState('Todos');
   const categories = ['Todos', 'Perfumes', 'Cabelos', 'Unhas', 'Pele', 'Maquiagem'];
+  const stockFilters = ['Todos', 'Disponível', 'Fora de Estoque', 'Fora de Estoque (Visível)'];
   const emptyProduct: Product = {
     id: '',
     name: '',
@@ -27,13 +31,23 @@ export function Admin() {
     image: '',
     available: true,
     category: 'Perfumes',
-    bestseller: false
+    bestseller: false,
+    outOfStock: false,
+    showWhenOutOfStock: false
   };
   const [formData, setFormData] = useState<Product>(emptyProduct);
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || product.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = filterCategory === 'Todos' || product.category === filterCategory;
-    return matchesSearch && matchesCategory;
+    let matchesStock = true;
+    if (filterStock === 'Disponível') {
+      matchesStock = product.available && !product.outOfStock;
+    } else if (filterStock === 'Fora de Estoque') {
+      matchesStock = product.outOfStock === true;
+    } else if (filterStock === 'Fora de Estoque (Visível)') {
+      matchesStock = product.outOfStock === true && product.showWhenOutOfStock === true;
+    }
+    return matchesSearch && matchesCategory && matchesStock;
   });
   const handleCreate = () => {
     setIsCreating(true);
@@ -52,6 +66,10 @@ export function Admin() {
     if (!formData.name || !formData.description || formData.price <= 0) {
       alert('Preencha todos os campos obrigatórios!');
       return;
+    }
+    // Lógica de validação: se está fora de estoque, não pode estar disponível
+    if (formData.outOfStock) {
+      formData.available = false;
     }
     if (isCreating) {
       setProducts([...products, formData]);
@@ -103,6 +121,41 @@ export function Admin() {
       reader.readAsText(file);
     }
   };
+  const getStockStatus = (product: Product) => {
+    if (product.outOfStock) {
+      if (product.showWhenOutOfStock) {
+        return {
+          text: 'Fora de Estoque (Visível)',
+          color: 'bg-orange-100 text-orange-700'
+        };
+      }
+      return {
+        text: 'Fora de Estoque',
+        color: 'bg-red-100 text-red-700'
+      };
+    }
+    if (product.available) {
+      return {
+        text: 'Disponível',
+        color: 'bg-green-100 text-green-700'
+      };
+    }
+    return {
+      text: 'Indisponível',
+      color: 'bg-gray-100 text-gray-700'
+    };
+  };
+  const getStockCount = () => {
+    const available = products.filter(p => p.available && !p.outOfStock).length;
+    const outOfStock = products.filter(p => p.outOfStock).length;
+    const outOfStockVisible = products.filter(p => p.outOfStock && p.showWhenOutOfStock).length;
+    return {
+      available,
+      outOfStock,
+      outOfStockVisible
+    };
+  };
+  const stockCount = getStockCount();
   return <div className="min-h-screen bg-golden-cream py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -135,8 +188,19 @@ export function Admin() {
                 </Button>
               </label>
             </div>
-            <div className="text-sm text-golden-brown font-semibold">
-              Total: {products.length} produtos
+            <div className="text-sm text-golden-brown font-semibold space-y-1">
+              <div>Total: {products.length} produtos</div>
+              <div className="text-xs space-y-0.5">
+                <div className="text-green-700">
+                  ✓ Disponíveis: {stockCount.available}
+                </div>
+                <div className="text-red-700">
+                  ✗ Fora de Estoque: {stockCount.outOfStock}
+                </div>
+                <div className="text-orange-700">
+                  👁️ Visíveis sem estoque: {stockCount.outOfStockVisible}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -151,6 +215,11 @@ export function Admin() {
             <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)} className="px-4 py-3 border-2 border-golden-light rounded-lg focus:outline-none focus:border-golden-primary focus:ring-2 focus:ring-golden-primary/20">
               {categories.map(cat => <option key={cat} value={cat}>
                   {cat}
+                </option>)}
+            </select>
+            <select value={filterStock} onChange={e => setFilterStock(e.target.value)} className="px-4 py-3 border-2 border-golden-light rounded-lg focus:outline-none focus:border-golden-primary focus:ring-2 focus:ring-golden-primary/20">
+              {stockFilters.map(filter => <option key={filter} value={filter}>
+                  {filter}
                 </option>)}
             </select>
           </div>
@@ -223,17 +292,7 @@ export function Admin() {
                 </select>
               </div>
 
-              <div className="flex items-center gap-6">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={formData.available} onChange={e => setFormData({
-                ...formData,
-                available: e.target.checked
-              })} className="w-5 h-5 text-golden-primary border-2 border-golden-light rounded focus:ring-2 focus:ring-golden-primary" />
-                  <span className="text-sm font-semibold text-golden-dark">
-                    Disponível
-                  </span>
-                </label>
-
+              <div className="flex flex-col gap-3">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input type="checkbox" checked={formData.bestseller || false} onChange={e => setFormData({
                 ...formData,
@@ -243,6 +302,67 @@ export function Admin() {
                     Mais Vendido
                   </span>
                 </label>
+              </div>
+
+              {/* Stock Management Section */}
+              <div className="md:col-span-2 bg-golden-cream p-4 rounded-lg border-2 border-golden-primary">
+                <h3 className="text-lg font-serif font-bold text-golden-dark mb-4">
+                  📦 Controle de Estoque
+                </h3>
+
+                <div className="space-y-4">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" checked={formData.outOfStock || false} onChange={e => {
+                  const isOutOfStock = e.target.checked;
+                  setFormData({
+                    ...formData,
+                    outOfStock: isOutOfStock,
+                    available: !isOutOfStock,
+                    showWhenOutOfStock: isOutOfStock ? formData.showWhenOutOfStock : false
+                  });
+                }} className="w-5 h-5 text-red-600 border-2 border-golden-light rounded focus:ring-2 focus:ring-red-500 mt-0.5" />
+                    <div>
+                      <span className="text-sm font-semibold text-golden-dark block">
+                        Produto Fora de Estoque
+                      </span>
+                      <span className="text-xs text-golden-brown">
+                        Marque se o produto não tem estoque disponível
+                      </span>
+                    </div>
+                  </label>
+
+                  {formData.outOfStock && <label className="flex items-start gap-3 cursor-pointer ml-8 p-3 bg-orange-50 rounded-lg border-2 border-orange-200">
+                      <input type="checkbox" checked={formData.showWhenOutOfStock || false} onChange={e => setFormData({
+                  ...formData,
+                  showWhenOutOfStock: e.target.checked
+                })} className="w-5 h-5 text-orange-600 border-2 border-orange-300 rounded focus:ring-2 focus:ring-orange-500 mt-0.5" />
+                      <div>
+                        <span className="text-sm font-semibold text-orange-900 block flex items-center gap-2">
+                          <Eye className="w-4 h-4" />
+                          Mostrar Produto no Site (mesmo sem estoque)
+                        </span>
+                        <span className="text-xs text-orange-700">
+                          O produto aparecerá no site com badge "Fora de
+                          Estoque" mas não poderá ser adicionado ao carrinho
+                        </span>
+                      </div>
+                    </label>}
+
+                  {!formData.outOfStock && <label className="flex items-start gap-3 cursor-pointer ml-8 p-3 bg-green-50 rounded-lg border-2 border-green-200">
+                      <input type="checkbox" checked={formData.available} onChange={e => setFormData({
+                  ...formData,
+                  available: e.target.checked
+                })} className="w-5 h-5 text-green-600 border-2 border-green-300 rounded focus:ring-2 focus:ring-green-500 mt-0.5" />
+                      <div>
+                        <span className="text-sm font-semibold text-green-900 block">
+                          Disponível para Venda
+                        </span>
+                        <span className="text-xs text-green-700">
+                          Produto pode ser adicionado ao carrinho
+                        </span>
+                      </div>
+                    </label>}
+                </div>
               </div>
             </div>
 
@@ -278,48 +398,57 @@ export function Admin() {
                   <th className="px-6 py-4 text-left text-sm font-semibold">
                     Status
                   </th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold">
+                    Visibilidade
+                  </th>
                   <th className="px-6 py-4 text-right text-sm font-semibold">
                     Ações
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-golden-light">
-                {filteredProducts.map(product => <tr key={product.id} className="hover:bg-golden-cream transition-colors">
-                    <td className="px-6 py-4">
-                      <img src={product.image} alt={product.name} className="w-16 h-16 object-cover rounded-lg border-2 border-golden-light" />
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="font-semibold text-golden-dark">
-                        {product.name}
-                      </div>
-                      <div className="text-sm text-golden-brown line-clamp-1">
-                        {product.description}
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="px-3 py-1 bg-golden-light text-golden-dark rounded-full text-sm font-medium">
-                        {product.category}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 font-bold text-golden-primary">
-                      R$ {product.price.toFixed(2)}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${product.available ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                        {product.available ? 'Disponível' : 'Indisponível'}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex gap-2 justify-end">
-                        <button onClick={() => handleEdit(product)} className="p-2 hover:bg-golden-light rounded-lg transition-colors" title="Editar">
-                          <Edit2 className="w-5 h-5 text-golden-brown" />
-                        </button>
-                        <button onClick={() => handleDelete(product.id)} className="p-2 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
-                          <Trash2 className="w-5 h-5 text-red-600" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>)}
+                {filteredProducts.map(product => {
+                const status = getStockStatus(product);
+                return <tr key={product.id} className="hover:bg-golden-cream transition-colors">
+                      <td className="px-6 py-4">
+                        <img src={product.image} alt={product.name} className="w-16 h-16 object-cover rounded-lg border-2 border-golden-light" />
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="font-semibold text-golden-dark">
+                          {product.name}
+                        </div>
+                        <div className="text-sm text-golden-brown line-clamp-1">
+                          {product.description}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="px-3 py-1 bg-golden-light text-golden-dark rounded-full text-sm font-medium">
+                          {product.category}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 font-bold text-golden-primary">
+                        R$ {product.price.toFixed(2)}
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${status.color}`}>
+                          {status.text}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        {product.outOfStock ? product.showWhenOutOfStock ? <Eye className="w-5 h-5 text-orange-600 inline" title="Visível no site" /> : <EyeOff className="w-5 h-5 text-gray-400 inline" title="Oculto no site" /> : <Eye className="w-5 h-5 text-green-600 inline" title="Visível no site" />}
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex gap-2 justify-end">
+                          <button onClick={() => handleEdit(product)} className="p-2 hover:bg-golden-light rounded-lg transition-colors" title="Editar">
+                            <Edit2 className="w-5 h-5 text-golden-brown" />
+                          </button>
+                          <button onClick={() => handleDelete(product.id)} className="p-2 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
+                            <Trash2 className="w-5 h-5 text-red-600" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>;
+              })}
               </tbody>
             </table>
           </div>
@@ -332,38 +461,36 @@ export function Admin() {
         {/* Instructions */}
         <div className="mt-8 bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
           <h3 className="text-lg font-serif font-bold text-golden-dark mb-3">
-            📝 Como usar:
+            📝 Como usar o Controle de Estoque:
           </h3>
           <ul className="space-y-2 text-sm text-golden-brown">
             <li>
-              • <strong>Criar:</strong> Clique em "Novo Produto" e preencha o
-              formulário
+              • <strong>Produto Fora de Estoque:</strong> Marque quando o
+              produto não tiver estoque
             </li>
             <li>
-              • <strong>Editar:</strong> Clique no ícone de lápis na linha do
-              produto
+              • <strong>Mostrar no Site:</strong> Produtos fora de estoque podem
+              ser exibidos com badge informativo
             </li>
             <li>
-              • <strong>Excluir:</strong> Clique no ícone de lixeira
-              (confirmação necessária)
+              • <strong>Ocultar do Site:</strong> Produtos fora de estoque sem a
+              opção "Mostrar" ficam completamente ocultos
             </li>
             <li>
-              • <strong>Exportar:</strong> Baixe o arquivo products.json
-              atualizado
-            </li>
-            <li>
-              • <strong>Importar:</strong> Carregue um arquivo products.json
-              existente
+              • <strong>Disponível:</strong> Apenas produtos com estoque e
+              marcados como disponíveis podem ser comprados
             </li>
           </ul>
-          <p className="mt-4 text-sm text-golden-brown">
-            <strong>⚠️ Importante:</strong> Após fazer alterações, clique em
-            "Exportar JSON" e substitua o arquivo{' '}
-            <code className="bg-golden-light px-2 py-1 rounded">
-              data/products.json
-            </code>{' '}
-            no projeto.
-          </p>
+          <div className="mt-4 p-4 bg-orange-50 border-2 border-orange-200 rounded-lg">
+            <p className="text-sm text-orange-900 font-semibold mb-2">
+              💡 Dica:
+            </p>
+            <p className="text-sm text-orange-800">
+              Use "Mostrar no Site" para produtos que voltarão em breve ao
+              estoque. Isso mantém o interesse dos clientes e permite que eles
+              vejam o produto mesmo sem poder comprar no momento.
+            </p>
+          </div>
         </div>
       </div>
     </div>;

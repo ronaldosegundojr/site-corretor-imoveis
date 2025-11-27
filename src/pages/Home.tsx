@@ -7,15 +7,24 @@ import { useCartContext } from '../contexts/CartContext';
 import productsData from '../data/products.json';
 export function Home() {
   const cart = useCartContext();
+  // Filter out products that are out of stock and not set to show
+  const availableProducts = productsData.products.filter(p => {
+    // Show if: not out of stock OR (out of stock but showWhenOutOfStock is true)
+    return !p.outOfStock || p.showWhenOutOfStock;
+  });
   // Get different product sets - now showing 12 products each
-  const newArrivals = productsData.products.slice(0, 12);
-  const featuredProducts = productsData.products.slice(12, 24);
-  const bestsellers = productsData.products.filter(p => p.bestseller).slice(0, 12);
+  const newArrivals = availableProducts.slice(0, 12);
+  const featuredProducts = availableProducts.slice(12, 24);
+  const bestsellers = availableProducts.filter(p => p.bestseller).slice(0, 12);
   const getQuantityInCart = (productId: string) => {
     const item = cart.cart.find(item => item.id === productId);
     return item ? item.quantity : 0;
   };
   const handleAddToCart = (product: any) => {
+    // Don't add if out of stock
+    if (product.outOfStock) {
+      return;
+    }
     console.log('Home: Adding product to cart:', product.name);
     cart.addToCart(product);
   };

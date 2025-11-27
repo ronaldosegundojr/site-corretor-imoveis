@@ -18,7 +18,11 @@ export function Products() {
     }
   }, [location.search]);
   const categories = ['Todos', 'Perfumes', 'Cabelos', 'Unhas', 'Pele', 'Maquiagem'];
-  const filteredProducts = productsData.products.filter(product => {
+  // Filter products: show only if not out of stock OR if out of stock but showWhenOutOfStock is true
+  const availableProducts = productsData.products.filter(p => {
+    return !p.outOfStock || p.showWhenOutOfStock;
+  });
+  const filteredProducts = availableProducts.filter(product => {
     const searchLower = searchTerm.toLowerCase();
     const matchesSearch = product.name.toLowerCase().includes(searchLower) || product.description.toLowerCase().includes(searchLower) || product.category.toLowerCase().includes(searchLower);
     const matchesCategory = selectedCategory === 'Todos' || product.category === selectedCategory;
@@ -29,6 +33,10 @@ export function Products() {
     return item ? item.quantity : 0;
   };
   const handleAddToCart = (product: any) => {
+    // Don't add if out of stock
+    if (product.outOfStock) {
+      return;
+    }
     console.log('Products: handleAddToCart called for:', product.name);
     cart.addToCart(product);
     console.log('Products: addToCart executed');
