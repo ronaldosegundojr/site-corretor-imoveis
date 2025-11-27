@@ -111,3 +111,16 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Prevent text overflow on small screens */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets on mobile */
+  button, a {
+    min-height: 44px;
+  }
+}
