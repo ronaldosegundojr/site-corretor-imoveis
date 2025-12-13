@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Lock, Eye, EyeOff } from 'lucide-react';
 import { Button } from './Button';
 interface ProtectedRouteProps {
@@ -24,8 +23,9 @@ export function ProtectedRoute({
   const MAX_ATTEMPTS = 5;
   const LOCKOUT_TIME = 15 * 60 * 1000; // 15 minutos
   const SESSION_DURATION = 2 * 60 * 60 * 1000; // 2 horas
-  useEffect(() => {
+useEffect(() => {
     checkAuthentication();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const checkAuthentication = () => {
     const authToken = localStorage.getItem(AUTH_KEY);

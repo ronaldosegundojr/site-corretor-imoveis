@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ProductCard } from './ProductCard';
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  available: boolean;
-  category: string;
-}
+import { Product } from '../types/Product';
 interface ProductCarouselProps {
   products: Product[];
   onAddToCart: (product: Product) => void;

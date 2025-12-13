@@ -1,14 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ShoppingBag, MessageCircle, TrendingUp, Star } from 'lucide-react';
 import { Button } from '../components/Button';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useCartContext } from '../contexts/CartContext';
+import { Product } from '../types/Product';
 import productsData from '../data/products.json';
+
+// Type assertion para os dados do JSON
+const typedProductsData = productsData as { products: Product[] };
 export function Home() {
   const cart = useCartContext();
   // Filter out products that are out of stock and not set to show
-  const availableProducts = productsData.products.filter(p => {
+  const availableProducts = typedProductsData.products.filter(p => {
     // Show if: not out of stock OR (out of stock but showWhenOutOfStock is true)
     return !p.outOfStock || p.showWhenOutOfStock;
   });
@@ -20,7 +23,7 @@ export function Home() {
     const item = cart.cart.find(item => item.id === productId);
     return item ? item.quantity : 0;
   };
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     // Don't add if out of stock
     if (product.outOfStock) {
       return;

@@ -1,7 +1,7 @@
-import React, { lazy } from 'react';
-import { Button } from './Button';
 import { Badge } from './Badge';
+import { Button } from './Button';
 import { Plus, Minus } from 'lucide-react';
+
 interface ProductCardProps {
   id: string;
   name: string;
@@ -16,6 +16,7 @@ interface ProductCardProps {
   outOfStock?: boolean;
   showWhenOutOfStock?: boolean;
 }
+
 export function ProductCard({
   name,
   description,
@@ -29,11 +30,13 @@ export function ProductCard({
 }: ProductCardProps) {
   const isInCart = quantityInCart > 0;
   const canPurchase = available && !outOfStock;
+
   const handleAddClick = () => {
     if (!canPurchase) return;
     console.log('ProductCard: Add button clicked for', name);
     onAddToCart();
   };
+
   return <article className="bg-white rounded-xl shadow-md overflow-hidden border-2 border-golden-light hover:shadow-xl hover:border-golden-primary transition-all duration-300 flex flex-col h-full">
       {/* Image - Fixed height */}
       <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gradient-to-br from-golden-cream to-golden-light flex-shrink-0">

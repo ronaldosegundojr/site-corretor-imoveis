@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { ShoppingBag, ArrowLeft, ArrowRight } from 'lucide-react';
 import { CartItem } from '../components/CartItem';

@@ -55,7 +55,7 @@ function parseXML(filePath: string): Product[] {
   for (const match of productMatches) {
     const productXML = match[1];
     const getTagValue = (tag: string): string => {
-      const regex = new RegExp(`<${tag}>(.*?)<\/${tag}>`, 's');
+      const regex = new RegExp(`<${tag}>(.*?)</${tag}>`, 's');
       const match = productXML.match(regex);
       return match ? match[1].trim() : '';
     };

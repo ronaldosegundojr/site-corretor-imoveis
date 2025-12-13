@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Minus, Plus, Trash2 } from 'lucide-react';
 interface CartItemProps {
   id: string;

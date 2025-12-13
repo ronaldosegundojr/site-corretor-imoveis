@@ -1,4 +1,4 @@
-import React, { useState, createElement } from 'react';
+import { useState } from 'react';
 import { Plus, Edit2, Trash2, Save, X, Download, Upload, Search, Eye, EyeOff } from 'lucide-react';
 import { Button } from '../components/Button';
 import productsData from '../data/products.json';
@@ -176,13 +176,13 @@ export function Admin() {
                 <Plus className="w-5 h-5 mr-2" />
                 Novo Produto
               </Button>
-              <Button onClick={handleExport} variant="secondary" className="shadow-md">
+                <Button onClick={handleExport} variant="secondary" className="shadow-md">
                 <Download className="w-5 h-5 mr-2" />
                 Exportar JSON
               </Button>
               <label className="cursor-pointer">
                 <input type="file" accept=".json" onChange={handleImport} className="hidden" />
-                <Button variant="outline" className="w-full shadow-md" onClick={() => {}}>
+                <Button variant="outline" className="w-full shadow-md">
                   <Upload className="w-5 h-5 mr-2" />
                   Importar JSON
                 </Button>
@@ -435,14 +435,14 @@ export function Admin() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-center">
-                        {product.outOfStock ? product.showWhenOutOfStock ? <Eye className="w-5 h-5 text-orange-600 inline" title="Visível no site" /> : <EyeOff className="w-5 h-5 text-gray-400 inline" title="Oculto no site" /> : <Eye className="w-5 h-5 text-green-600 inline" title="Visível no site" />}
+                        {product.outOfStock ? product.showWhenOutOfStock ? <Eye className="w-5 h-5 text-orange-600 inline" aria-label="Visível no site" /> : <EyeOff className="w-5 h-5 text-gray-400 inline" aria-label="Oculto no site" /> : <Eye className="w-5 h-5 text-green-600 inline" aria-label="Visível no site" />}
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex gap-2 justify-end">
-                          <button onClick={() => handleEdit(product)} className="p-2 hover:bg-golden-light rounded-lg transition-colors" title="Editar">
+                        <button onClick={() => handleEdit(product)} className="p-2 hover:bg-golden-light rounded-lg transition-colors" aria-label="Editar">
                             <Edit2 className="w-5 h-5 text-golden-brown" />
                           </button>
-                          <button onClick={() => handleDelete(product.id)} className="p-2 hover:bg-red-50 rounded-lg transition-colors" title="Excluir">
+                          <button onClick={() => handleDelete(product.id)} className="p-2 hover:bg-red-50 rounded-lg transition-colors" aria-label="Excluir">
                             <Trash2 className="w-5 h-5 text-red-600" />
                           </button>
                         </div>

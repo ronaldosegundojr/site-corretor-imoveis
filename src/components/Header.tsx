@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ShoppingCart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { SearchBar } from './SearchBar';

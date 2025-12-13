@@ -1,4 +1,4 @@
-import React, { useEffect, createElement } from 'react';
+import { useEffect } from 'react';
 import { Heart, Phone, Mail } from 'lucide-react';
 export function Footer() {
   useEffect(() => {
@@ -7,9 +7,9 @@ export function Footer() {
     script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
     script.async = true;
     document.body.appendChild(script);
-    script.onload = () => {
-      // @ts-ignore
-      new window.VLibras.Widget('https://vlibras.gov.br/app');
+  script.onload = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      new (window as any).VLibras.Widget('https://vlibras.gov.br/app');
     };
     return () => {
       document.body.removeChild(script);
@@ -74,10 +74,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* VLibras Widget */}
-      <div vw="true" className="enabled">
-        <div vw-access-button="true" className="active"></div>
-        <div vw-plugin-wrapper="true">
+    {/* VLibras Widget */}
+      <div data-vw="true" className="enabled">
+        <div data-vw-access-button="true" className="active"></div>
+        <div data-vw-plugin-wrapper="true">
           <div className="vw-plugin-top-wrapper"></div>
         </div>
       </div>

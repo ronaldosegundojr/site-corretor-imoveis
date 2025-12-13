@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { useCartContext } from '../contexts/CartContext';
 import { useLocation } from 'react-router-dom';
+import { Product } from '../types/Product';
 import productsData from '../data/products.json';
+
+// Type assertion para os dados do JSON
+const typedProductsData = productsData as { products: Product[] };
 export function Products() {
   const cart = useCartContext();
   const location = useLocation();
@@ -19,7 +23,7 @@ export function Products() {
   }, [location.search]);
   const categories = ['Todos', 'Perfumes', 'Cabelos', 'Unhas', 'Pele', 'Maquiagem'];
   // Filter products: show only if not out of stock OR if out of stock but showWhenOutOfStock is true
-  const availableProducts = productsData.products.filter(p => {
+  const availableProducts = typedProductsData.products.filter(p => {
     return !p.outOfStock || p.showWhenOutOfStock;
   });
   const filteredProducts = availableProducts.filter(product => {
@@ -32,7 +36,7 @@ export function Products() {
     const item = cart.cart.find(item => item.id === productId);
     return item ? item.quantity : 0;
   };
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     // Don't add if out of stock
     if (product.outOfStock) {
       return;
