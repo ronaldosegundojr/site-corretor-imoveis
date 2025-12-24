@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: perfumaria-golden-api
+    runtime: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "node server-api-only.js"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: PAYLOAD_SECRET
+        generateValue: true
+      - key: JWT_SECRET
+        generateValue: true
+    autoDeploy: true
