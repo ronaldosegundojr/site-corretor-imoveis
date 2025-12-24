@@ -3,15 +3,16 @@ import { Sparkles, ShoppingBag, MessageCircle, TrendingUp, Star } from 'lucide-r
 import { Button } from '../components/Button';
 import { ProductCarousel } from '../components/ProductCarousel';
 import { useCartContext } from '../contexts/CartContext';
+import { useProducts } from '../hooks/useProducts';
 import { Product } from '../types/Product';
-import productsData from '../data/products.json';
+import { DebugAPI } from '../components/DebugAPI';
 
-// Type assertion para os dados do JSON
-const typedProductsData = productsData as { products: Product[] };
 export function Home() {
   const cart = useCartContext();
+  const { products, loading, error } = useProducts();
+  
   // Filter out products that are out of stock and not set to show
-  const availableProducts = typedProductsData.products.filter(p => {
+  const availableProducts = products.filter(p => {
     // Show if: not out of stock OR (out of stock but showWhenOutOfStock is true)
     return !p.outOfStock || p.showWhenOutOfStock;
   });
@@ -31,7 +32,34 @@ export function Home() {
     console.log('Home: Adding product to cart:', product.name);
     cart.addToCart(product);
   };
+  // Loading state
+  if (loading) {
+    return <div className="min-h-screen bg-golden-cream flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-golden-primary mx-auto mb-4"></div>
+        <p className="text-golden-primary text-xl">Carregando produtos...</p>
+      </div>
+    </div>;
+  }
+
+  // Error state
+  if (error) {
+    return <div className="min-h-screen bg-golden-cream flex items-center justify-center">
+      <div className="text-center">
+        <p className="text-red-600 text-xl mb-4">Erro ao carregar produtos</p>
+        <p className="text-golden-brown">{error}</p>
+        <button 
+          onClick={() => window.location.reload()} 
+          className="mt-4 px-6 py-2 bg-golden-primary text-white rounded-lg hover:bg-golden-dark"
+        >
+          Tentar novamente
+        </button>
+      </div>
+    </div>;
+  }
+
   return <div className="min-h-screen bg-golden-cream">
+      <DebugAPI />
       {/* Top Carousel - Novidades */}
       <section className="bg-gradient-to-r from-golden-light to-golden-cream py-12 border-b-2 border-golden-primary">
         <div className="container mx-auto px-4">

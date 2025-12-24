@@ -1,50 +1,44 @@
 import { useEffect, useState } from 'react';
 import { Lock, Eye, EyeOff } from 'lucide-react';
 import { Button } from './Button';
+import { authAPI } from '../services/api';
+
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
+
 export function ProtectedRoute({
   children
 }: ProtectedRouteProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
-  const [attempts, setAttempts] = useState(0);
-  // Credenciais (em produção, use variáveis de ambiente)
-  const ADMIN_USERNAME = 'admin';
-  const ADMIN_PASSWORD = 'golden2024'; // MUDE ESTA SENHA!
+  
   // Chave para localStorage
-  const AUTH_KEY = 'perfumaria_golden_admin_auth';
-  const AUTH_EXPIRY_KEY = 'perfumaria_golden_admin_expiry';
-  const MAX_ATTEMPTS = 5;
-  const LOCKOUT_TIME = 15 * 60 * 1000; // 15 minutos
-  const SESSION_DURATION = 2 * 60 * 60 * 1000; // 2 horas
+  const AUTH_KEY = 'perfumaria_golden_admin_token';
 useEffect(() => {
     checkAuthentication();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const checkAuthentication = () => {
+  const checkAuthentication = async () => {
     const authToken = localStorage.getItem(AUTH_KEY);
-    const expiry = localStorage.getItem(AUTH_EXPIRY_KEY);
-    if (authToken && expiry) {
-      const expiryTime = parseInt(expiry);
-      const now = Date.now();
-      if (now < expiryTime) {
+    if (authToken) {
+      try {
+        await authAPI.getMe();
         setIsAuthenticated(true);
-      } else {
-        // Sessão expirada
+      } catch (error) {
         logout();
       }
     }
     setIsLoading(false);
   };
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    
     // Verificar tentativas
     const lockoutUntil = localStorage.getItem('admin_lockout');
     if (lockoutUntil) {
@@ -53,25 +47,21 @@ useEffect(() => {
         const remainingMinutes = Math.ceil((lockoutTime - Date.now()) / 60000);
         setError(`Muitas tentativas. Tente novamente em ${remainingMinutes} minutos.`);
         return;
-      } else {
-        localStorage.removeItem('admin_lockout');
-        setAttempts(0);
       }
     }
-    // Validar credenciais
-    if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-      // Login bem-sucedido
-      const expiryTime = Date.now() + SESSION_DURATION;
-      const authToken = btoa(`${username}:${Date.now()}`); // Token simples
-      localStorage.setItem(AUTH_KEY, authToken);
-      localStorage.setItem(AUTH_EXPIRY_KEY, expiryTime.toString());
+
+    try {
+      const response = await authAPI.login(email, password);
+      const token = response.data?.token || response.token;
+      localStorage.setItem(AUTH_KEY, token);
       localStorage.removeItem('admin_lockout');
       setIsAuthenticated(true);
-      setAttempts(0);
-    } else {
-      // Login falhou
-      const newAttempts = attempts + 1;
-      setAttempts(newAttempts);
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      const newAttempts = (localStorage.getItem('login_attempts') ? parseInt(localStorage.getItem('login_attempts')!) : 0) + 1;
+      localStorage.setItem('login_attempts', newAttempts.toString());
+      
       if (newAttempts >= MAX_ATTEMPTS) {
         const lockoutUntil = Date.now() + LOCKOUT_TIME;
         localStorage.setItem('admin_lockout', lockoutUntil.toString());
@@ -83,10 +73,11 @@ useEffect(() => {
     }
   };
   const logout = () => {
+    authAPI.logout();
     localStorage.removeItem(AUTH_KEY);
-    localStorage.removeItem(AUTH_EXPIRY_KEY);
+    localStorage.removeItem('login_attempts');
     setIsAuthenticated(false);
-    setUsername('');
+    setEmail('');
     setPassword('');
   };
   if (isLoading) {
@@ -113,12 +104,12 @@ useEffect(() => {
           {/* Login Form */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-golden-primary">
             <form onSubmit={handleLogin} className="space-y-6">
-              {/* Username */}
+              {/* Email */}
               <div>
-                <label htmlFor="username" className="block text-sm font-semibold text-golden-dark mb-2">
-                  Usuário
+                <label htmlFor="email" className="block text-sm font-semibold text-golden-dark mb-2">
+                  Email
                 </label>
-                <input id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full px-4 py-3 border-2 border-golden-light rounded-lg focus:outline-none focus:border-golden-primary focus:ring-2 focus:ring-golden-primary/20 transition-colors" placeholder="Digite seu usuário" required autoComplete="username" />
+                <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full px-4 py-3 border-2 border-golden-light rounded-lg focus:outline-none focus:border-golden-primary focus:ring-2 focus:ring-golden-primary/20 transition-colors" placeholder="Digite seu email" required autoComplete="email" />
               </div>
 
               {/* Password */}

@@ -1,0 +1,456 @@
+[
+  {
+    "name": "Acqua di Giò pour Homme",
+    "description": "Fragrância marinha fresca com notas de bergamota, neroli e cedro. Perfeito para o homem moderno e sofisticado.",
+    "price": 389.9,
+    "category": "Perfumes Masculinos",
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&q=80",
+    "stock": 15,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Giorgio Armani",
+    "tags": [
+      "marinho",
+      "fresco",
+      "citrico"
+    ],
+    "id": "1766597493258",
+    "createdAt": "2025-12-24T17:31:33.258Z"
+  },
+  {
+    "name": "Bleu de Chanel",
+    "description": "Elegância atemporal com notas de grapefruit, incenso e gengibre. Uma fragrância única e inesquecível.",
+    "price": 599.9,
+    "category": "Perfumes Masculinos",
+    "image": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=80",
+    "stock": 12,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Chanel",
+    "tags": [
+      "madeira",
+      "ambar",
+      "sofisticado"
+    ],
+    "id": "1766597493260",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Sauvage Elixir",
+    "description": "Intensidade extrema com notas frescas de lavanda e um toque de baunilha. Poder e sedução em uma fragrância.",
+    "price": 450,
+    "category": "Perfumes Masculinos",
+    "image": "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&q=80",
+    "stock": 8,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Dior",
+    "tags": [
+      "lavanda",
+      "baunilha",
+      "intenso"
+    ],
+    "id": "1766597493261",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Chanel N°5",
+    "description": "O ícone da perfumaria. Notas de jasmim, rosa e sândalo em uma composição eterna e sofisticada.",
+    "price": 750,
+    "category": "Perfumes Femininos",
+    "image": "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=80",
+    "stock": 10,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Chanel",
+    "tags": [
+      "floral",
+      "classico",
+      "elegante"
+    ],
+    "id": "1766597493262",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "La Vie Est Belle",
+    "description": "A felicidade em uma fragrância. Notas de pêra, blackcurrant e jasmim com um toque de baunilha.",
+    "price": 320,
+    "category": "Perfumes Femininos",
+    "image": "https://images.unsplash.com/photo-1596704017254-9b121068ec31?w=400&q=80",
+    "stock": 20,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Lancôme",
+    "tags": [
+      "floral",
+      "doce",
+      "feliz"
+    ],
+    "id": "1766597493263",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Good Girl",
+    "description": "Audácia e elegância em perfeita harmonia. Notas de amora, jasmim e baunilha com um toque de madeira.",
+    "price": 410,
+    "category": "Perfumes Femininos",
+    "image": "https://images.unsplash.com/photo-1583241800698-c5e4d9c9e8d7?w=400&q=80",
+    "stock": 18,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Carolina Herrera",
+    "tags": [
+      "floral",
+      "doce",
+      "sedutor"
+    ],
+    "id": "1766597493264",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Shampoo Absolut Repair Gold",
+    "description": "Reparação intensa para cabelos danificados. Fórmula com quinoa dourada e proteínas para reconstrução completa.",
+    "price": 89.9,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=400&q=80",
+    "stock": 25,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "L'Oréal Professionnel",
+    "tags": [
+      "reparador",
+      "proteínas",
+      "danificados"
+    ],
+    "id": "1766597493265",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Shampoo Nutritive N°8",
+    "description": "Nutrição profunda para cabelos muito secos. Manteiga de karité e óleo de murumuru para maciez extrema.",
+    "price": 95,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1526947425960-9a44d19e2c4f?w=400&q=80",
+    "stock": 30,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Kérastase",
+    "tags": [
+      "nutritivo",
+      "seco",
+      "maciez"
+    ],
+    "id": "1766597493266",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Shampoo Silver",
+    "description": "Controle de amarelado para cabelos loiros e grisalhos. Pigmentos roxos que neutralizam tons indesejados.",
+    "price": 75,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80",
+    "stock": 22,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Wella Professionals",
+    "tags": [
+      "loiro",
+      "anti-amarelado",
+      "pigmentado"
+    ],
+    "id": "1766597493267",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Condicionador Absolut Repair Gold",
+    "description": "Completa o tratamento reparador. Selagem das cutículas e reconstrução interna dos fios danificados.",
+    "price": 89.9,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&q=80",
+    "stock": 20,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "L'Oréal Professionnel",
+    "tags": [
+      "reparador",
+      "selagem",
+      "reconstrutor"
+    ],
+    "id": "1766597493268",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Condicionador Nutritive N°8",
+    "description": "Nutrição prolongada e brilho intenso. Fórmula leve que não pesa nos cabelos muito secos.",
+    "price": 95,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80",
+    "stock": 18,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Kérastase",
+    "tags": [
+      "nutritivo",
+      "brilho",
+      "leve"
+    ],
+    "id": "1766597493269",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Tinta Koleston Perfect 6.0",
+    "description": "Cor loiro claro natural com amônia zero. Fórmula com lipogel para resultados vibrantes e duradouros.",
+    "price": 45,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80",
+    "stock": 15,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Wella Professionals",
+    "tags": [
+      "loiro",
+      "amonia zero",
+      "duradouro"
+    ],
+    "id": "1766597493270",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Tinta INOA 4.0",
+    "description": "Castanho médio com tecnologia ODY S². Cor intensa e brilho superior com respeito à fibra capilar.",
+    "price": 52,
+    "category": "Cabelos",
+    "image": "https://images.unsplash.com/photo-1556228852-80a5f1b9c37d?w=400&q=80",
+    "stock": 12,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "L'Oréal Professionnel",
+    "tags": [
+      "castanho",
+      "sem amônia",
+      "brilho"
+    ],
+    "id": "1766597493271",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Base HD Liquid Foundation",
+    "description": "Cobertura alta e acabamento aveludado. Fórmula 24h com FPS 30 e resistência à água.",
+    "price": 125,
+    "category": "Maquiagem",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&q=80",
+    "stock": 30,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Make Up For Ever",
+    "tags": [
+      "base",
+      "alta cobertura",
+      "longa duração"
+    ],
+    "id": "1766597493272",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Batom Rouge Signature",
+    "description": "Cor intensa e hidratação por 8 horas. Fórmula com óleo de jojoba e vitamina E para lábios macios.",
+    "price": 85,
+    "category": "Maquiagem",
+    "image": "https://images.unsplash.com/photo-1586495048133-b9c26b349f07?w=400&q=80",
+    "stock": 40,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "L'Oréal Paris",
+    "tags": [
+      "batom",
+      "hidratante",
+      "longa duração"
+    ],
+    "id": "1766597493273",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Paleta de Sombras Nude Stories",
+    "description": "12 tons nude matte e metálicos. Fórmula ultra pigmentada com efeito blur de poros.",
+    "price": 165,
+    "category": "Maquiagem",
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80",
+    "stock": 25,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Huda Beauty",
+    "tags": [
+      "sombras",
+      "nude",
+      "pigmentado"
+    ],
+    "id": "1766597493274",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Máscara de Cílios Volume Express",
+    "description": "Volume instantâneo e cílios definidos. Pincela curvado que capta até os menores cílios.",
+    "price": 45,
+    "category": "Maquiagem",
+    "image": "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=400&q=80",
+    "stock": 35,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Maybelline New York",
+    "tags": [
+      "cílios",
+      "volume",
+      "instantâneo"
+    ],
+    "id": "1766597493275",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Sérum Vitamina C 20%",
+    "description": "Iluminação imediata e ação antioxidante. Ácido hialurônico e vitamina C pura para pele radiante.",
+    "price": 195,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80",
+    "stock": 20,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "The Ordinary",
+    "tags": [
+      "sérum",
+      "vitamina C",
+      "antioxidante"
+    ],
+    "id": "1766597493276",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Creme Anti-Idade Retinol 0.5%",
+    "description": "Redução de rugas e linhas finas. Retinol estabilizado com poder de renovação celular.",
+    "price": 220,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80",
+    "stock": 15,
+    "featured": true,
+    "outOfStock": false,
+    "available": true,
+    "brand": "SkinCeuticals",
+    "tags": [
+      "anti-idade",
+      "retinol",
+      "rugos"
+    ],
+    "id": "1766597493277",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Água Micellar Bioderma",
+    "description": "Limpeza suave sem enxágüe. Remove maquiagem e impurezas respeitando o pH da pele.",
+    "price": 85,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1556228852-80a5f1b9c37d?w=400&q=80",
+    "stock": 50,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Bioderma",
+    "tags": [
+      "limpeza",
+      "micelar",
+      "sensível"
+    ],
+    "id": "1766597493278",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Hidratante Facial FPS 60",
+    "description": "Proteção solar ampla e hidratação 24h. Textura leve oil-free com niacinamida.",
+    "price": 120,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80",
+    "stock": 25,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "La Roche-Posay",
+    "tags": [
+      "protetor solar",
+      "hidratante",
+      "FPS 60"
+    ],
+    "id": "1766597493279",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Óleo Corporal Amêndoas Doce",
+    "description": "Hidratação profunda e maciez sedosa. Absorção rápida com vitamina E e óleo de argan.",
+    "price": 65,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&q=80",
+    "stock": 30,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Natura",
+    "tags": [
+      "óleo",
+      "hidratante",
+      "corpo"
+    ],
+    "id": "1766597493280",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "name": "Esfoliante Facial Enzimático",
+    "description": "Renovação suave sem microesferas. Enzimas de papaia e abacaxi para pele luminosa.",
+    "price": 95,
+    "category": "Cuidados com a Pele",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80",
+    "stock": 22,
+    "featured": false,
+    "outOfStock": false,
+    "available": true,
+    "brand": "Kiehl's",
+    "tags": [
+      "esfoliante",
+      "enzimático",
+      "renovação"
+    ],
+    "id": "1766597493281",
+    "createdAt": "2025-12-24T17:31:33.259Z"
+  },
+  {
+    "id": "",
+    "name": "Produto teste 123",
+    "description": "teste",
+    "price": 23,
+    "image": "http://localhost:3001/uploads/product-1766600035481-542093782.png",
+    "available": true,
+    "category": "Perfumes",
+    "bestseller": false,
+    "outOfStock": false,
+    "showWhenOutOfStock": false,
+    "stock": 0,
+    "featured": false,
+    "brand": "",
+    "tags": [],
+    "createdAt": "2025-12-24T18:14:03.688Z"
+  }
+]
