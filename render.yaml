@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: perfumaria-golden-api
+    runtime: node
+    buildCommand: "npm install"
+    startCommand: "node server-api-only.js"
