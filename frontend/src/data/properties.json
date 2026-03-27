@@ -1,0 +1,142 @@
+{
+  "properties": [
+    {
+      "id": "prop1",
+      "title": "Mansão Suspensa no Jardim Primavera",
+      "description": "Exclusivo apartamento de alto padrão com vista definitiva para o pôr do sol. Acabamento em mármore italiano e automação completa.",
+      "price": 4500000,
+      "images": ["https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=800"],
+      "type": "Apartamento",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Jardim Primavera",
+        "subdivision": "Edifício Majestic"
+      },
+      "features": {
+        "bedrooms": 4,
+        "suites": 4,
+        "bathrooms": 6,
+        "garages": 5,
+        "area": 450
+      },
+      "featured": true,
+      "code": "AP0001"
+    },
+    {
+      "id": "prop2",
+      "title": "Casa de Campo Contemporânea",
+      "description": "Arquitetura minimalista integrada à natureza. Amplo living com pé direito duplo e piscina com borda infinita.",
+      "price": 2800000,
+      "images": ["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"],
+      "type": "Casa",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Residencial Damha",
+        "subdivision": "Damha I"
+      },
+      "features": {
+        "bedrooms": 3,
+        "suites": 3,
+        "bathrooms": 5,
+        "garages": 4,
+        "area": 380
+      },
+      "featured": true,
+      "code": "CA0002"
+    },
+    {
+      "id": "prop3",
+      "title": "Terreno Premium para Investimento",
+      "description": "Localização estratégica em corredor comercial de alta valorização. Ideal para sede corporativa ou mall de luxo.",
+      "price": 1200000,
+      "images": ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800"],
+      "type": "Terreno",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Vila Ferroviária",
+        "subdivision": ""
+      },
+      "features": {
+        "bedrooms": 0,
+        "suites": 0,
+        "bathrooms": 0,
+        "garages": 0,
+        "area": 1000
+      },
+      "featured": false,
+      "code": "TE0003"
+    },
+    {
+      "id": "prop4",
+      "title": "Apartamento Garden Decorado",
+      "description": "O conforto de uma casa com a segurança de um prédio. Totalmente mobiliado e decorado por arquiteto renomado.",
+      "price": 950000,
+      "images": ["https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=800"],
+      "type": "Apartamento",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Centro",
+        "subdivision": "Residencial Central Park"
+      },
+      "features": {
+        "bedrooms": 3,
+        "suites": 1,
+        "bathrooms": 2,
+        "garages": 2,
+        "area": 120
+      },
+      "featured": false,
+      "code": "AP0004"
+    },
+    {
+      "id": "prop5",
+      "title": "Sobrado Vintage no Carmo",
+      "description": "Charme e história em um dos bairros mais tradicionais. Reformado respeitando a estética original.",
+      "price": 750000,
+      "images": ["https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&q=80&w=800"],
+      "type": "Casa",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Carmo",
+        "subdivision": ""
+      },
+      "features": {
+        "bedrooms": 4,
+        "suites": 0,
+        "bathrooms": 3,
+        "garages": 2,
+        "area": 250
+      },
+      "featured": false,
+      "code": "CA0005"
+    },
+    {
+      "id": "prop6",
+      "title": "Cobertura Duplex com Piscina",
+      "description": "O ápice do luxo urbano. Área gourmet privativa com vista panorâmica de 360 graus da cidade.",
+      "price": 3200000,
+      "images": ["https://images.unsplash.com/photo-1567496898905-2595156a7aa3?auto=format&fit=crop&q=80&w=800"],
+      "type": "Apartamento",
+      "status": "Venda",
+      "location": {
+        "city": "Araraquara",
+        "neighborhood": "Vila Xavier",
+        "subdivision": "Edifício Horizon"
+      },
+      "features": {
+        "bedrooms": 4,
+        "suites": 3,
+        "bathrooms": 5,
+        "garages": 4,
+        "area": 320
+      },
+      "featured": true,
+      "code": "CO0006"
+    }
+  ]
+}

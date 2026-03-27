@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload/config';
 import path from 'path';
-import Products from './collections/Products.js';
+import Properties from './collections/Properties.js';
 import Users from './collections/Users.js';
 
 export default buildConfig({
@@ -9,7 +9,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [
-    Products,
+    Properties,
     Users,
   ],
   typescript: {
@@ -17,7 +17,7 @@ export default buildConfig({
   },
   db: {
     adapter: require('@payloadcms/db-mongodb').mongooseAdapter({
-      url: process.env.MONGODB_URI || 'mongodb://localhost:27017/perfumaria-golden',
+      url: process.env.MONGODB_URI || 'mongodb://localhost:27017/seu-broker-imoveis',
     }),
   },
 });

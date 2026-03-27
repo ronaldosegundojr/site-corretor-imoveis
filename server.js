@@ -28,44 +28,44 @@ const start = async () => {
     res.json({ status: 'OK', message: 'Backend is running with Payload CMS' });
   });
 
-  // Rota para produtos públicos (compatibilidade com frontend)
-  app.get('/api/products', async (req, res) => {
+  // Rota para imóveis públicos (compatibilidade com frontend)
+  app.get('/api/properties', async (req, res) => {
     try {
-      const products = await payload.find({
-        collection: 'products',
+      const properties = await payload.find({
+        collection: 'properties',
       });
       
       res.json({
-        docs: products.docs,
-        totalDocs: products.totalDocs,
-        limit: products.limit,
-        totalPages: products.totalPages,
-        page: products.page,
-        pagingCounter: products.pagingCounter,
-        hasPrevPage: products.hasPrevPage,
-        hasNextPage: products.hasNextPage,
-        prevPage: products.prevPage,
-        nextPage: products.nextPage
+        docs: properties.docs,
+        totalDocs: properties.totalDocs,
+        limit: properties.limit,
+        totalPages: properties.totalPages,
+        page: properties.page,
+        pagingCounter: properties.pagingCounter,
+        hasPrevPage: properties.hasPrevPage,
+        hasNextPage: properties.hasNextPage,
+        prevPage: properties.prevPage,
+        nextPage: properties.nextPage
       });
     } catch (error) {
-      res.status(500).json({ error: 'Erro ao carregar produtos' });
+      res.status(500).json({ error: 'Erro ao carregar imóveis' });
     }
   });
 
-  app.get('/api/products/:id', async (req, res) => {
+  app.get('/api/properties/:id', async (req, res) => {
     try {
-      const product = await payload.findByID({
-        collection: 'products',
+      const property = await payload.findByID({
+        collection: 'properties',
         id: req.params.id,
       });
       
-      if (!product) {
-        return res.status(404).json({ error: 'Produto não encontrado' });
+      if (!property) {
+        return res.status(404).json({ error: 'Imóvel não encontrado' });
       }
       
-      res.json(product);
+      res.json(property);
     } catch (error) {
-      res.status(500).json({ error: 'Erro ao carregar produto' });
+      res.status(500).json({ error: 'Erro ao carregar imóvel' });
     }
   });
 

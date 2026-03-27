@@ -9,21 +9,31 @@
 
 @layer base {
   :root {
-    /* Perfumaria Golden Color Palette */
-    --color-golden-dark: #1a1410;
-    --color-golden-brown: #3d2817;
-    --color-golden-primary: #c9a961;
-    --color-golden-light: #e8d5b7;
-    --color-golden-cream: #f5efe6;
+    /* Premium Real Estate Color Palette */
+    --color-primary: #0a1d37;      /* Navy Blue */
+    --color-secondary: #c9a961;    /* Gold */
+    --color-accent: #1e3a5f;       /* Lighter Navy */
+    --color-bg-light: #f8f9fa;     /* Off-white */
+    --color-text-main: #2d3748;    /* Dark Gray */
+    --color-text-muted: #718096;   /* Muted Gray */
+    
+    /* Legacy Mapping for compatibility */
+    --color-golden-dark: var(--color-primary);
+    --color-golden-brown: var(--color-accent);
+    --color-golden-primary: var(--color-secondary);
+    --color-golden-light: var(--color-bg-light);
+    --color-golden-cream: #ffffff;
   }
 
   body {
-    @apply font-sans antialiased;
+    @apply font-sans antialiased text-slate-800;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg-light);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    @apply font-bold text-slate-900;
   }
 
   * {
@@ -32,7 +42,7 @@
 
   *:focus-visible {
     @apply ring-2 ring-offset-2;
-    ring-color: var(--color-golden-primary);
+    ring-color: var(--color-secondary);
   }
 }
 

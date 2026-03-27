@@ -1,48 +1,37 @@
 import { useState, useEffect } from 'react';
+import { useProperties } from '../hooks/useProperties';
 
-// Componente de teste para debug
+// Componente de teste para debug - Modo Frontend-Only
 export function DebugAPI() {
-  const [apiStatus, setApiStatus] = useState('Verificando...');
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const testAPI = async () => {
-      try {
-        const apiUrl = import.meta.env.VITE_PAYLOAD_URL || 'http://localhost:3001';
-        console.log('🔍 Testando API em:', apiUrl);
-        
-        const response = await fetch(`${apiUrl}/api/products`);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-        
-        const data = await response.json();
-        console.log('✅ API funcionando! Produtos:', data.docs.length);
-        
-        setApiStatus('✅ API Conectada');
-        setProducts(data.docs);
-        setError(null);
-      } catch (err) {
-        console.error('❌ Erro na API:', err);
-        setApiStatus('❌ API Falhou');
-        setError(err.message);
-        setProducts([]);
-      }
-    };
-
-    testAPI();
-  }, []);
-
+  const { properties } = useProperties();
+  
   return (
-    <div className="fixed top-4 right-4 bg-white p-4 rounded-lg shadow-lg border-2 border-golden-primary z-50 max-w-sm">
-      <h3 className="font-bold text-golden-dark mb-2">🔍 Debug API</h3>
-      <p className="text-sm mb-2">Status: {apiStatus}</p>
-      {error && <p className="text-xs text-red-600 mb-2">Erro: {error}</p>}
-      <p className="text-xs text-golden-brown">Produtos: {products.length}</p>
-      <div className="text-xs text-gray-500 mt-2">
-        <p>URL: {import.meta.env.VITE_PAYLOAD_URL || 'http://localhost:3001'}</p>
+    <div className="fixed top-4 right-4 bg-primary p-4 rounded-xl shadow-2xl border border-secondary/20 z-[100] max-w-sm animate-fadeIn">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="bg-secondary/20 p-2 rounded-lg">
+          <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+        </div>
+        <h3 className="font-bold text-white text-sm">🔍 Status do Sistema</h3>
+      </div>
+      
+      <div className="space-y-2">
+        <div className="flex justify-between items-center text-[10px] text-slate-300 font-bold uppercase tracking-widest">
+          <span>Modo:</span>
+          <span className="text-secondary">Frontend-Only (Offline)</span>
+        </div>
+        <div className="flex justify-between items-center text-[10px] text-slate-300 font-bold uppercase tracking-widest">
+          <span>Imóveis Ativos:</span>
+          <span className="text-white bg-white/10 px-2 py-0.5 rounded">{properties.length}</span>
+        </div>
+        <div className="flex justify-between items-center text-[10px] text-slate-300 font-bold uppercase tracking-widest">
+          <span>Persistência:</span>
+          <span className="text-green-400">LocalStorage ✅</span>
+        </div>
+      </div>
+      
+      <div className="mt-4 pt-3 border-t border-white/5 flex flex-col gap-1">
+        <p className="text-[8px] text-slate-400 uppercase tracking-widest font-bold">Diretório Root:</p>
+        <p className="text-[9px] text-slate-500 font-mono break-all">c:\Users\Ronaldo\Desktop\site-corretor-imoveis</p>
       </div>
     </div>
   );
